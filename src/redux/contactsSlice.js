@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {fetchContacts} from "./contactsOps";
+import { fetchContacts } from "./contactsOps";
 // import testData from "../components/testData.json";
 
 const handlePending = (state) => {
@@ -9,13 +9,12 @@ const handlePending = (state) => {
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
- 
 };
 
-const handleSuccess = (state, action) => {
+const handleSuccess = (state) => {
   state.isLoading = false;
   state.error = null;
-  state.item = action.payload;
+  // state.item = action.payload;
 };
 
 const contactsSlice = createSlice({
@@ -43,12 +42,14 @@ const contactsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.pending, handlePending)
-      .addCase(fetchContacts.fulfilled, handleRejected)
-      .addCase(fetchContacts.rejected, handleSuccess)
-
-      .addCase(addContact.pending, handlePending)
-      .addCase(addContact.fulfilled, handleRejected)
-      .addCase(addContact.rejected, handleSuccess);
+      .addCase(fetchContacts.fulfilled, (handleSuccess, state, action) => {
+        handleSuccess(state);
+        state.item = action.payload;
+      })
+      .addCase(fetchContacts.rejected, handleRejected)
+      // .addCase(addContact.pending, handlePending)
+      // .addCase(addContact.fulfilled, handleRejected)
+      // .addCase(addContact.rejected, handleSuccess);
   },
 });
 
