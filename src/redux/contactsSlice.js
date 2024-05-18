@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { nanoid } from "nanoid";
-import testData from "../components/testData.json";
+// import testData from "../components/testData.json";
 
 const contactsSlice = createSlice({
   name: "contacts",
-  initialState: { item: testData, loading: false, error: null },
+  initialState: { item: [], loading: false, error: null },
   reducers: {
     addContact: {
       reducer(state, action) {
