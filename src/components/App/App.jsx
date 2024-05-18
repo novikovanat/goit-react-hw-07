@@ -23,7 +23,7 @@ const App = () => {
 
       {/* {item.length > 0 && } */}
       <ContactList />
-      {isLoading && <p>Loading tasks...</p>}
+      {isLoading && <p>Loading contacts...</p>}
       {error && <p>{error}</p>}
     </div>
   );

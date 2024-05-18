@@ -15,7 +15,7 @@ const handleRejected = (state, action) => {
 const handleSuccess = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.items = action.payload;
+  state.item = action.payload;
 };
 
 const contactsSlice = createSlice({
@@ -44,7 +44,11 @@ const contactsSlice = createSlice({
     builder
       .addCase(fetchContacts.pending, handlePending)
       .addCase(fetchContacts.fulfilled, handleRejected)
-      .addCase(fetchContacts.rejected, handleSuccess);
+      .addCase(fetchContacts.rejected, handleSuccess)
+
+      .addCase(addContact.pending, handlePending)
+      .addCase(addContact.fulfilled, handleRejected)
+      .addCase(addContact.rejected, handleSuccess);
   },
 });
 
