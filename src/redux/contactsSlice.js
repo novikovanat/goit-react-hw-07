@@ -4,7 +4,7 @@ import testData from "../components/testData.json";
 
 const contactsSlice = createSlice({
   name: "contacts",
-  initialState: { item: testData },
+  initialState: { item: testData, loading: false, error: null },
   reducers: {
     addContact: {
       reducer(state, action) {
